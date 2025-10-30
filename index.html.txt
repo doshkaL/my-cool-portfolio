@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Georges Azar | Software Engineer & Data Professional</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #e6edf3;
+      --accent: #00bcd4;
+      --muted: #8b949e;
+      --card-bg: #161b22;
+    }
+
+    [data-theme="light"] {
+      --bg: #f9f9fb;
+      --fg: #1a1a1a;
+      --accent: #007acc;
+      --muted: #555;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    /* Scroll progress bar */
+    #progress-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 200;
+    }
+
+    #progress-bar {
+      height: 4px;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.1s linear;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: fixed;
+      width: 100%;
+      top: 4px;
+      background: rgba(13,17,23,0.8);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    [data-theme="light"] header {
+      background: rgba(249,249,251,0.8);
+    }
+
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    section {
+      padding: 6rem 3rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* HERO */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: radial-gradient(circle at top, #00bcd420 0%, transparent 70%);
+    }
+
+    #hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    #hero p { font-size: 1.3rem; color: var(--muted); }
+
+    .btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #0097a7; }
+
+    /* About */
+    #about ul { list-style: none; padding: 0; }
+    #about li { margin-bottom: 0.5rem; }
+
+    /* Projects */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    /* Timeline (Experience & Education) */
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+      border-left: 3px solid var(--accent);
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .timeline-item h3 { margin: 0; }
+    .timeline-item span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Contact */
+    .socials a {
+      margin-right: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid #222;
+    }
+
+    @media(max-width:600px) {
+      header { padding: 1rem; }
+      #hero h1 { font-size: 2.2rem; }
+    }
+
+    /* Toggle & Animations */
+    #theme-toggle { background:none; border:none; color:var(--fg); cursor:pointer; }
+    #theme-toggle:hover { color:var(--accent); }
+
+    .fade-in { opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+
+<body>
+  <div id="progress-container"><div id="progress-bar"></div></div>
+
+  <header>
+    <h2>G.Azar</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="fade-in">
+    <h1>Hi, I'm Georges 👋</h1>
+    <p><span id="typed-text"></span></p>
+    <button class="btn" onclick="scrollToSection('projects')">View My Work</button>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>
+      I'm a software engineer and data professional passionate about creating smart, scalable, and user-centered applications.
+      I thrive at the intersection of <b>software engineering</b>, <b>data analytics</b>, and <b>AI-driven insights</b>.
+    </p>
+    <h3>Technical Skills</h3>
+    <ul>
+      <li>JavaScript, Python, SQL, HTML5, CSS3</li>
+      <li>Machine Learning, APIs, Data Visualization</li>
+      <li>Git, Docker, RESTful Services</li>
+    </ul>
+    <h3>Soft Skills</h3>
+    <ul>
+      <li>Problem Solving</li>
+      <li>Collaboration & Communication</li>
+      <li>Attention to Detail</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card fade-in">
+        <h3>💹 Data Dashboard</h3>
+        <p>Interactive dashboard visualizing live KPIs.</p>
+        <a href="#" class="btn">View</a>
+      </div>
+      <div class="card fade-in">
+        <h3>🤖 Customer Churn Predictor</h3>
+        <p>Machine learning project with web integration.</p>
+        <a href="#" class="btn">View</a>
+      </div>
+      <div class="card fade-in">
+        <h3>🌐 Portfolio Website</h3>
+        <p>Personal portfolio with animations and themes.</p>
+        <a href="#" class="btn">View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="fade-in">
+    <h2>Experience & Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Software Engineer – ABC Tech</h3>
+        <span>2022 – Present</span>
+        <p>Developing data-driven applications, APIs, and automation tools for business intelligence.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Data Analyst – XYZ Analytics</h3>
+        <span>2020 – 2022</span>
+        <p>Analyzed customer data using Python & SQL, built dashboards to track key performance metrics.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>B.Sc. Computer Science – University of Berlin</h3>
+        <span>2016 – 2020</span>
+        <p>Specialized in Software Engineering and Data Science.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <h2>Get in Touch</h2>
+    <p>Have a project or want to collaborate?</p>
+    <p><a href="mailto:georges@example.com" style="color:var(--accent)">📧 georges@example.com</a></p>
+    <div class="socials">
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Georges Azar. Built with ❤️ and Vanilla JS.
+  </footer>
+
+  <script>
+    // Smooth scroll
+    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+
+    // Typing animation
+    const texts = ["Software Engineer", "Data Professional", "Problem Solver"];
+    let count=0,index=0;
+    function type(){
+      const text=texts[count];
+      document.getElementById('typed-text').textContent=text.slice(0,++index);
+      if(index===text.length){count=(count+1)%texts.length;index=0;setTimeout(type,1000);} else setTimeout(type,120);
+    } type();
+
+    // Theme toggle
+    const toggle=document.getElementById('theme-toggle');
+    const saved=localStorage.getItem('theme');
+    const prefersLight=window.matchMedia('(prefers-color-scheme: light)').matches;
+    document.documentElement.setAttribute('data-theme',saved|| (prefersLight?'light':'dark'));
+    toggle.textContent=document.documentElement.getAttribute('data-theme')==='light'?'🌙':'☀️';
+    toggle.onclick=()=>{
+      const t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',t);
+      toggle.textContent=t==='light'?'🌙':'☀️';
+      localStorage.setItem('theme',t);
+    };
+
+    // Fade-in
+    const observer=new IntersectionObserver(e=>{
+      e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');observer.unobserve(x.target);}})
+    },{threshold:0.15});
+    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+    // Progress bar
+    const bar=document.getElementById('progress-bar');
+    window.addEventListener('scroll',()=>{
+      const s=window.scrollY, d=document.documentElement.scrollHeight-window.innerHeight;
+      bar.style.width=(s/d)*100+'%';
+    });
+  </script>
+</body>
+</html>
