@@ -3,308 +3,222 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Georges Azar – Full-Stack Engineer & Data Professional.">
   <title>Georges Azar | Full-Stack Engineer & Data Professional</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --fg: #111;
-      --accent: #007acc;
-      --muted: #666;
-      --section-bg: #f8f9fa;
+      --bg:#fff; --fg:#111; --accent:#007acc; --muted:#555; --section-bg:#f8f9fa;
     }
-
     [data-theme="dark"] {
-      --bg: #0e1116;
-      --fg: #f2f2f2;
-      --accent: #00bcd4;
-      --muted: #aaa;
-      --section-bg: #161b22;
+      --bg:#0e1116; --fg:#f2f2f2; --accent:#00bcd4; --muted:#aaa; --section-bg:#161b22;
     }
-
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      transition: background 0.4s, color 0.4s;
-      line-height: 1.6;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--bg);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-
-    header h1 {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.3rem;
-      margin: 0;
-      letter-spacing: 0.5px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--fg);
-      margin-left: 1.5rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover { color: var(--accent); }
-
-    #theme-toggle {
-      margin-left: 1.5rem;
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: var(--fg);
-    }
-
-    section {
-      padding: 7rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    #hero {
-      text-align: center;
-      padding-top: 8rem;
-      padding-bottom: 6rem;
-    }
-
-    #hero h2 {
-      font-family: "Poppins", sans-serif;
-      font-size: 3.2rem;
-      margin: 0.5rem 0;
-      font-weight: 700;
-    }
-
-    #hero p {
-      color: var(--muted);
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-family: "Poppins", sans-serif;
-    }
-
-    /* About Section */
-    #about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    #about p {
-      font-size: 1rem;
-      color: var(--muted);
-    }
-
-    #about ul {
-      list-style: none;
-      padding: 0;
-      color: var(--muted);
-    }
-
-    #about li { margin-bottom: 0.4rem; }
-
-    /* Projects */
-    #projects {
-      background: var(--section-bg);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .project {
-      background: var(--bg);
-      border-radius: 12px;
-      padding: 1.8rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    .project h3 {
-      margin-top: 0;
-      color: var(--accent);
-    }
-
-    /* Timeline (Experience & Education) */
-    .timeline {
-      position: relative;
-      border-left: 2px solid var(--accent);
-      padding-left: 1.5rem;
-    }
-
-    .timeline-item {
-      margin-bottom: 1.8rem;
-    }
-
-    .timeline-item h3 {
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-
-    .timeline-item span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    /* Contact */
-    #contact {
-      text-align: center;
-      background: var(--section-bg);
-    }
-
-    #contact a {
-      color: var(--accent);
-      text-decoration: none;
-      margin: 0 0.8rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @media(max-width:800px){
-      #about { grid-template-columns: 1fr; text-align: center; }
-    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--fg);transition:.4s background,.4s color}
+    header{position:fixed;top:0;left:0;width:100%;background:var(--bg);border-bottom:1px solid rgba(0,0,0,.05);z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+    header h1{font-family:"Poppins",sans-serif;font-size:1.3rem;margin:0}
+    nav a{text-decoration:none;color:var(--fg);margin-left:1.5rem;font-weight:500;transition:.3s color}
+    nav a:hover{color:var(--accent)}
+    button{background:none;border:none;cursor:pointer;color:var(--fg)}
+    #theme-toggle,#lang-toggle{margin-left:1rem;font-size:1.1rem}
+    section{padding:7rem 2rem;max-width:1000px;margin:auto;opacity:0;transform:translateY(30px);transition:.8s ease}
+    section.visible{opacity:1;transform:translateY(0)}
+    #hero{text-align:center;padding-top:9rem}
+    #hero h2{font-family:"Poppins",sans-serif;font-size:3rem;margin:.5rem 0}
+    #hero p{color:var(--muted);max-width:600px;margin:auto;font-size:1.1rem}
+    .section-title{text-align:center;font-size:2rem;margin-bottom:2rem;font-family:"Poppins",sans-serif}
+    #about{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+    #about p,#about li{color:var(--muted)}
+    #projects{background:var(--section-bg)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+    .project{background:var(--bg);border-radius:12px;padding:1.8rem;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:.3s}
+    .project:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,.1)}
+    .project h3{color:var(--accent)}
+    .project a{color:var(--accent);text-decoration:none}
+    .timeline{border-left:2px solid var(--accent);padding-left:1.5rem}
+    .timeline-item{margin-bottom:1.8rem}
+    .timeline-item span{color:var(--muted);font-size:.9rem}
+    #contact{text-align:center;background:var(--section-bg)}
+    #contact a{color:var(--accent);text-decoration:none;margin:0 .8rem}
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.9rem}
+    @media(max-width:800px){#about{grid-template-columns:1fr;text-align:center}header{flex-direction:column;gap:.5rem}}
   </style>
 </head>
 <body>
   <header>
     <h1>Georges Azar</h1>
     <nav>
-      <a href="#about">Über mich</a>
-      <a href="#projects">Projekte</a>
-      <a href="#experience">Erfahrung</a>
-      <a href="#education">Bildung</a>
-      <a href="#contact">Kontakt</a>
+      <a href="#about" data-i18n="nav_about"></a>
+      <a href="#projects" data-i18n="nav_projects"></a>
+      <a href="#experience" data-i18n="nav_experience"></a>
+      <a href="#education" data-i18n="nav_education"></a>
+      <a href="#contact" data-i18n="nav_contact"></a>
+      <button id="lang-toggle">EN</button>
       <button id="theme-toggle">🌙</button>
     </nav>
   </header>
 
   <section id="hero">
-    <h2>Full-Stack Engineer & Data Professional</h2>
-    <p>Ich baue intelligente, skalierbare und datengesteuerte Web- und Softwarelösungen, die Performance und Benutzerfreundlichkeit vereinen.</p>
+    <h2 data-i18n="hero_title"></h2>
+    <p data-i18n="hero_text"></p>
   </section>
 
   <section id="about">
     <div>
-      <h2 class="section-title">Über mich</h2>
-      <p>Full-Stack-Entwickler mit Fokus auf Python, Java, Spring Boot, React und PostgreSQL. Erfahrung in agiler Entwicklung und Microservice-Architekturen. Leidenschaftlich über Datenanalyse und Machine-Learning-Anwendungen.</p>
+      <h2 class="section-title" data-i18n="about_title"></h2>
+      <p data-i18n="about_text"></p>
     </div>
     <div>
-      <h3>Fähigkeiten</h3>
+      <h3 data-i18n="skills_title"></h3>
       <ul>
         <li>Python, Java, Spring Boot, React.js, Next.js</li>
         <li>PostgreSQL, MongoDB, Docker, GitLab CI/CD, n8n</li>
         <li>Machine Learning, REST APIs, Data Analytics</li>
-        <li>Azure DevOps, Agile Methoden</li>
+        <li>Azure DevOps, Agile Methods</li>
       </ul>
     </div>
   </section>
 
   <section id="projects">
-    <h2 class="section-title">Projekte</h2>
+    <h2 class="section-title" data-i18n="projects_title"></h2>
     <div class="projects-grid">
       <div class="project">
-        <h3>Automatisiertes Bewertungssystem</h3>
-        <p>Microservice-System zur automatisierten Bewertung von Programmieraufgaben für Bildungsplattformen.</p>
+        <h3>Automated Grading System</h3>
+        <p data-i18n="proj1_text"></p>
         <p><strong>Tech:</strong> Docker, Python, React.js, PostgreSQL, TailwindCSS</p>
-        <p><a href="https://github.com/doshkaL/Automatisiertes-Bewertungssystem-f-r-Programmieraufgaben" target="_blank">GitHub</a></p>
+        <a href="https://github.com/doshkaL/Automatisiertes-Bewertungssystem-f-r-Programmieraufgaben" target="_blank">GitHub</a>
       </div>
       <div class="project">
-        <h3>Fahrverbindung (Graph Data Science)</h3>
-        <p>Optimierte Berechnung von Routen mithilfe von Graphdatenbanken für Echtzeitverkehrsanalyse.</p>
+        <h3>Travel Connection (Graph Data Science)</h3>
+        <p data-i18n="proj2_text"></p>
         <p><strong>Tech:</strong> Python, Pandas, GeoPandas, Neo4j</p>
       </div>
       <div class="project">
-        <h3>Plantworld Online-Shop</h3>
-        <p>Fullstack-Shop in Microservice-Architektur mit Next.js & Spring Boot.</p>
+        <h3>Plantworld Online Shop</h3>
+        <p data-i18n="proj3_text"></p>
         <p><strong>Tech:</strong> Next.js, Spring Boot, RabbitMQ, REST API</p>
-        <p><a href="https://github.com/KBE-Webshop" target="_blank">GitHub</a></p>
+        <a href="https://github.com/KBE-Webshop" target="_blank">GitHub</a>
       </div>
     </div>
   </section>
 
   <section id="experience">
-    <h2 class="section-title">Erfahrung</h2>
+    <h2 class="section-title" data-i18n="exp_title"></h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>Fullstack Praktikum – Stromnetz Berlin GmbH</h3>
+        <h3>Fullstack Internship – Stromnetz Berlin GmbH</h3>
         <span>04/2024 – 06/2024</span>
-        <p>Frontend- & Backend-Entwicklung, neue Features, Performance-Optimierung, Azure DevOps.</p>
+        <p data-i18n="exp1_text"></p>
       </div>
+    </div>
   </section>
 
   <section id="education">
-    <h2 class="section-title">Bildung</h2>
+    <h2 class="section-title" data-i18n="edu_title"></h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>B.Sc. Angewandte Informatik – HTW Berlin</h3>
+        <h3>B.Sc. Applied Computer Science – HTW Berlin</h3>
         <span>2019 – 2025</span>
-        <p>Schwerpunkte: Datenwissenschaft, Softwareentwicklung, Projektmanagement.</p>
+        <p data-i18n="edu1_text"></p>
       </div>
       <div class="timeline-item">
         <h3>BTEC Level 5 HND Diploma – New Horizons Institute</h3>
         <span>2012 – 2014</span>
-        <p>Fokus: Softwareentwicklung, Datenanalyse & Systemdesign.</p>
+        <p data-i18n="edu2_text"></p>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2 class="section-title">Kontakt</h2>
-    <p>📍 Berlin, Deutschland</p>
+    <h2 class="section-title" data-i18n="contact_title"></h2>
+    <p>📍 Berlin, Germany</p>
     <p>📧 <a href="mailto:georges.azar.tech@gmail.com">georges.azar.tech@gmail.com</a></p>
-    <p><a href="https://github.com/doshkaL" target="_blank">GitHub</a> | <a href="www.linkedin.com/in/georges-azar-a571362a1" target="_blank">LinkedIn</a></p>
+    <p><a href="https://github.com/doshkaL" target="_blank">GitHub</a> |
+       <a href="https://www.linkedin.com/in/georges-azar-a571362a1" target="_blank">LinkedIn</a></p>
   </section>
 
   <footer>© 2025 Georges Azar – Designed & Built by Hand.</footer>
 
   <script>
-    // Light/Dark mode
-    const toggle = document.getElementById("theme-toggle");
-    const saved = localStorage.getItem("theme");
-    if(saved) document.documentElement.setAttribute("data-theme", saved);
-    toggle.addEventListener("click", ()=>{
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-      toggle.textContent = next === "dark" ? "☀️" : "🌙";
-    });
+    /* ---------- Translations ---------- */
+    const translations = {
+      de: {
+        nav_about:"Über mich", nav_projects:"Projekte", nav_experience:"Erfahrung",
+        nav_education:"Bildung", nav_contact:"Kontakt",
+        hero_title:"Full-Stack Engineer & Data Professional",
+        hero_text:"Ich entwickle skalierbare, datengesteuerte Anwendungen und Softwarelösungen mit Fokus auf Performance und Benutzerfreundlichkeit.",
+        about_title:"Über mich",
+        about_text:"Full-Stack-Entwickler mit Fokus auf Python, Java, Spring Boot, React und PostgreSQL. Erfahrung in agiler Entwicklung und datengetriebenen Projekten.",
+        skills_title:"Fähigkeiten",
+        projects_title:"Projekte",
+        proj1_text:"Microservice-System zur automatisierten Bewertung von Programmieraufgaben für Bildungsplattformen.",
+        proj2_text:"Optimierte Berechnung von Routen mithilfe von Graphdatenbanken für Echtzeitverkehrsanalyse.",
+        proj3_text:"Fullstack-Shop in Microservice-Architektur mit Next.js & Spring Boot.",
+        exp_title:"Berufserfahrung",
+        exp1_text:"Frontend- & Backend-Entwicklung, neue Features, Performance-Optimierung, Azure DevOps.",
+        edu_title:"Bildung",
+        edu1_text:"Schwerpunkte: Datenwissenschaft, Softwareentwicklung, Projektmanagement.",
+        edu2_text:"Fokus: Softwareentwicklung, Datenanalyse & Systemdesign.",
+        contact_title:"Kontakt"
+      },
+      en: {
+        nav_about:"About", nav_projects:"Projects", nav_experience:"Experience",
+        nav_education:"Education", nav_contact:"Contact",
+        hero_title:"Full-Stack Engineer & Data Professional",
+        hero_text:"I build scalable, data-driven applications and software solutions focused on performance and usability.",
+        about_title:"About Me",
+        about_text:"Full-stack developer specializing in Python, Java, Spring Boot, React, and PostgreSQL. Experienced in agile development and data-driven systems.",
+        skills_title:"Skills",
+        projects_title:"Projects",
+        proj1_text:"Microservice system for automated grading of programming tasks for education platforms.",
+        proj2_text:"Optimized route calculation using graph databases for real-time traffic analysis.",
+        proj3_text:"Full-stack e-commerce platform using Next.js and Spring Boot microservices.",
+        exp_title:"Experience",
+        exp1_text:"Frontend & backend development, new features, performance optimization, Azure DevOps.",
+        edu_title:"Education",
+        edu1_text:"Focus: Data Science, Software Development, Project Management.",
+        edu2_text:"Focus: Software Engineering, Data Analysis & System Design.",
+        contact_title:"Contact"
+      }
+    };
+
+    /* ---------- Theme Toggle ---------- */
+    const themeToggle=document.getElementById("theme-toggle");
+    const savedTheme=localStorage.getItem("theme");
+    document.documentElement.setAttribute("data-theme",savedTheme||"light");
+    themeToggle.textContent=(savedTheme==="dark")?"☀️":"🌙";
+    themeToggle.onclick=()=>{
+      const current=document.documentElement.getAttribute("data-theme");
+      const next=current==="dark"?"light":"dark";
+      document.documentElement.setAttribute("data-theme",next);
+      localStorage.setItem("theme",next);
+      themeToggle.textContent=next==="dark"?"☀️":"🌙";
+    };
+
+    /* ---------- Language Toggle ---------- */
+    const langToggle=document.getElementById("lang-toggle");
+    let currentLang=localStorage.getItem("lang")||"de";
+    function applyTranslations(){
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key=el.dataset.i18n;
+        if(translations[currentLang][key]) el.textContent=translations[currentLang][key];
+      });
+      langToggle.textContent=currentLang==="de"?"EN":"DE";
+    }
+    langToggle.onclick=()=>{
+      currentLang=currentLang==="de"?"en":"de";
+      localStorage.setItem("lang",currentLang);
+      applyTranslations();
+    };
+    applyTranslations();
+
+    /* ---------- Fade-in on scroll ---------- */
+    const observer=new IntersectionObserver(e=>{
+      e.forEach(x=>{
+        if(x.isIntersecting){x.target.classList.add("visible");observer.unobserve(x.target);}
+      });
+    },{threshold:.2});
+    document.querySelectorAll("section").forEach(s=>observer.observe(s));
   </script>
 </body>
 </html>
