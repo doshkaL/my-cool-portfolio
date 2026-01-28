@@ -1,224 +1,356 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Georges Azar – Full-Stack Engineer & Data Professional.">
-  <title>Georges Azar | Full-Stack Engineer & Data Professional</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:#fff; --fg:#111; --accent:#007acc; --muted:#555; --section-bg:#f8f9fa;
+<html class="light dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Georges Azar | Professional Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00B4D8",
+                        secondary: "#1A2B3C",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#101f22"
+                    },
+                    fontFamily: {
+                        display: "Inter"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; min-height: 100dvh; }
+        .dot-active { @apply w-2 h-2 rounded-full bg-primary; }
+        .dot-inactive { @apply w-2 h-2 rounded-full bg-slate-200 dark:bg-slate-700; }
+        .glass { @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md; }.timeline-container { @apply relative py-10; }
+        .timeline-line { @apply absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-slate-200 dark:bg-slate-700; }
+        .timeline-dot { @apply absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full z-10; }
+        @media (max-width: 768px) {
+            .timeline-line { @apply left-4; }
+            .timeline-dot { @apply left-4; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
     }
-    [data-theme="dark"] {
-      --bg:#0e1116; --fg:#f2f2f2; --accent:#00bcd4; --muted:#aaa; --section-bg:#161b22;
-    }
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--fg);transition:.4s background,.4s color}
-    header{position:fixed;top:0;left:0;width:100%;background:var(--bg);border-bottom:1px solid rgba(0,0,0,.05);z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
-    header h1{font-family:"Poppins",sans-serif;font-size:1.3rem;margin:0}
-    nav a{text-decoration:none;color:var(--fg);margin-left:1.5rem;font-weight:500;transition:.3s color}
-    nav a:hover{color:var(--accent)}
-    button{background:none;border:none;cursor:pointer;color:var(--fg)}
-    #theme-toggle,#lang-toggle{margin-left:1rem;font-size:1.1rem}
-    section{padding:7rem 2rem;max-width:1000px;margin:auto;opacity:0;transform:translateY(30px);transition:.8s ease}
-    section.visible{opacity:1;transform:translateY(0)}
-    #hero{text-align:center;padding-top:9rem}
-    #hero h2{font-family:"Poppins",sans-serif;font-size:3rem;margin:.5rem 0}
-    #hero p{color:var(--muted);max-width:600px;margin:auto;font-size:1.1rem}
-    .section-title{text-align:center;font-size:2rem;margin-bottom:2rem;font-family:"Poppins",sans-serif}
-    #about{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-    #about p,#about li{color:var(--muted)}
-    #projects{background:var(--section-bg)}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-    .project{background:var(--bg);border-radius:12px;padding:1.8rem;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:.3s}
-    .project:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,.1)}
-    .project h3{color:var(--accent)}
-    .project a{color:var(--accent);text-decoration:none}
-    .timeline{border-left:2px solid var(--accent);padding-left:1.5rem}
-    .timeline-item{margin-bottom:1.8rem}
-    .timeline-item span{color:var(--muted);font-size:.9rem}
-    #contact{text-align:center;background:var(--section-bg)}
-    #contact a{color:var(--accent);text-decoration:none;margin:0 .8rem}
-    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.9rem}
-    @media(max-width:800px){#about{grid-template-columns:1fr;text-align:center}header{flex-direction:column;gap:.5rem}}
   </style>
-</head>
-<body>
-  <header>
-    <h1>Georges Azar</h1>
-    <nav>
-      <a href="#about" data-i18n="nav_about"></a>
-      <a href="#projects" data-i18n="nav_projects"></a>
-      <a href="#experience" data-i18n="nav_experience"></a>
-      <a href="#education" data-i18n="nav_education"></a>
-      <a href="#contact" data-i18n="nav_contact"></a>
-      <button id="lang-toggle">EN</button>
-      <button id="theme-toggle">🌙</button>
-    </nav>
-  </header>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-secondary dark:text-slate-200 transition-colors duration-300">
+<header class="sticky top-0 z-50 glass border-b border-slate-100 dark:border-slate-800">
+<nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="text-xl font-bold text-secondary dark:text-white">
+                Georges Azar
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium hover:text-primary" href="#home">Home</a>
+<a class="text-sm font-medium hover:text-primary" href="#projects">Projects</a>
+<a class="text-sm font-medium hover:text-primary" href="#skills">Skills</a>
+<a class="text-sm font-medium hover:text-primary" href="#experience">Experience</a>
+<a class="text-sm font-medium hover:text-primary" href="#about">About</a>
+</div>
+<button class="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded font-semibold text-sm transition-all">
+                Hire Me
+            </button>
+</nav>
+</header>
+<main>
+<section class="py-12 md:py-24 max-w-7xl mx-auto px-4" id="home">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-secondary dark:text-white leading-tight mb-6">
+                        Full-Stack Engineer &amp; <span class="text-primary">Data Professional</span>
+</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg">
+                        I build scalable, data-driven applications and software solutions focused on performance and usability.
+                    </p>
+<div class="flex flex-wrap gap-4 mb-10">
+<button class="bg-secondary dark:bg-slate-800 text-white px-8 py-3 rounded-DEFAULT font-semibold">View Projects</button>
+<button class="border border-slate-200 dark:border-slate-700 px-8 py-3 rounded-DEFAULT font-semibold hover:bg-slate-50 dark:hover:bg-slate-800">Download CV</button>
+</div>
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"><span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span> React</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"><span class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span> Python</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"><span class="w-2 h-2 bg-red-400 rounded-full mr-2"></span> Java</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"><span class="w-2 h-2 bg-indigo-400 rounded-full mr-2"></span> PostgreSQL</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span> Docker</span>
+</div>
+</div>
+<div class="relative flex justify-center">
+<img alt="Developer desk illustration" class="rounded-2xl shadow-2xl w-full max-w-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMol56X-_2rhOt2xC21YPprKJ6AhH--HhYc-zY8Oma7bWHtSqjIBSjKs51SCO0dwaTwnDR_C5QdYbjMz4p2DkTgkFkXrIVUeoLACuodGoJ2G9-fEUA0ea67oTiXS9LMeF8F7TghsQ08WNQ0zwMyualu65HId-z5CWnYJCJpEqlBHE-B8o3lB21ZbaGmRhC30WpPe--kRMv5ZcHFFbSYQL1MhLDCGs37ywugnoNhfEmvtD7iE488U9MZ0tKMnTL8imQTfY4pFb8TiHS"/>
+<div class="absolute -top-4 -right-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-slate-50 dark:bg-slate-900/50" id="about">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<img alt="Georges Azar Professional Headshot" class="rounded-2xl shadow-xl w-full max-w-sm mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvyFZnsNAhbb-Yp6gY_mWwmqcgZlTPFNSKXGWdtvEBJ3B9Ue76L25IGbZMQiJG5Z6iCU_y0aySOmsT6DwP8MoYUtoLKbQJCMLjfGr_VYvuvhT7wHrXFANmNchSSy_fyVnQxCcfqwCVeGzqEWg50d4_oX9PSNl65zNZ7cOMdCi5z2jnlMVKtrXp7Y_TDuhYH4MBghK8GoECYt9jhpA3Vso6nbZ2U62OJv_ffHG-3Wcp25bCSAR40mhDB1qdnxGz6idzboCOsLHioHkF"/>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="text-3xl font-bold text-secondary dark:text-white mb-6">About Me</h2>
+<div class="space-y-4 text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
+<p>
+                                I am a <span class="text-primary font-semibold">Full-stack developer</span> specializing in Python, Java, Spring Boot, React, and PostgreSQL. I focus on creating robust technical architectures and seamless user experiences.
+                            </p>
+<p>
+                                My background in both engineering and data science allows me to approach problems with a unique perspective, ensuring that data-driven insights are integrated into the core of the software solutions I build.
+                            </p>
+</div>
+<a class="inline-flex items-center mt-6 text-primary font-semibold hover:underline" href="#">
+                            Read more about my journey <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 max-w-7xl mx-auto px-4 text-center" id="skills">
+<h2 class="text-3xl font-bold text-secondary dark:text-white mb-2">Skills &amp; Technologies</h2>
+<p class="text-slate-500 dark:text-slate-400 mb-12">Core competencies and technical stack</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 bg-white dark:bg-slate-800 rounded-DEFAULT border border-slate-100 dark:border-slate-700 shadow-sm text-left">
+<div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400">layers</span>
+</div>
+<h3 class="text-xl font-bold mb-6">Development</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between"><span class="text-sm font-medium">React / Next.js</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Python / Java</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Spring Boot</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div></div></li>
+</ul>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-DEFAULT border border-slate-100 dark:border-slate-700 shadow-sm text-left">
+<div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400">database</span>
+</div>
+<h3 class="text-xl font-bold mb-6">Databases</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between"><span class="text-sm font-medium">PostgreSQL</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">MongoDB</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Neo4j</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div><div class="dot-inactive"></div></div></li>
+</ul>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-DEFAULT border border-slate-100 dark:border-slate-700 shadow-sm text-left">
+<div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-purple-600 dark:text-purple-400">settings_suggest</span>
+</div>
+<h3 class="text-xl font-bold mb-6">DevOps</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Docker / Azure</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">GitLab CI/CD</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">n8n Automation</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div><div class="dot-inactive"></div></div></li>
+</ul>
+</div>
+<div class="p-8 bg-white dark:bg-slate-800 rounded-DEFAULT border border-slate-100 dark:border-slate-700 shadow-sm text-left">
+<div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-400">psychology</span>
+</div>
+<h3 class="text-xl font-bold mb-6">Specializations</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Machine Learning</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div><div class="dot-inactive"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">REST APIs</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div></div></li>
+<li class="flex items-center justify-between"><span class="text-sm font-medium">Graph Science</span><div class="flex gap-1"><div class="dot-active"></div><div class="dot-active"></div><div class="dot-active"></div><div class="dot-inactive"></div><div class="dot-inactive"></div></div></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="py-20 bg-slate-50 dark:bg-slate-900/50" id="projects">
+<div class="max-w-7xl mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-secondary dark:text-white mb-2">Featured Projects</h2>
+<p class="text-slate-500 dark:text-slate-400">Recent software and data solutions</p>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-12 border border-slate-100 dark:border-slate-700">
+<div class="md:w-1/2 p-4">
+<img alt="Automated Grading System Screenshot" class="w-full h-full object-cover rounded-2xl min-h-[300px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSONMwjhAmQ7y8iY6_ix3Nel90P1FvnGdPW6AfJd5lHEow__Hz0rvhhPWstqDJKLFBCZSHl9FfJJsAhA9QQOB2tvCl7IYdBCRv0pBnkD9E0rMKmqHc2BxUuRt-8L8OXBRFIE52UkBxwv9PRjq3QrLRu57XMHOgDeNwg12Qt-8txGIVLnUosTo6oI_Csf5md3efjI2UOi115VbRVNPiQpPZHkSrm7I9uweOvhKo6Z47wDlONpMIz2V7p-1a9kY5-TNcCxFsuHwMm598"/>
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-center">
+<h3 class="text-2xl font-bold mb-4">Automated Grading System</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Microservice system for automated grading of programming tasks for education platforms.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded">Python</span>
+<span class="bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs font-bold px-3 py-1 rounded">Microservices</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-bold px-3 py-1 rounded">PostgreSQL</span>
+<span class="bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-xs font-bold px-3 py-1 rounded">Docker</span>
+</div>
+<div class="flex gap-4">
+<button class="bg-secondary dark:bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold">Live Demo</button>
+<button class="bg-slate-100 dark:bg-slate-900 px-6 py-2 rounded-lg font-semibold border border-slate-200 dark:border-slate-700 flex items-center">
+<span class="material-symbols-outlined text-sm mr-2">code</span> View Code
+                            </button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row-reverse mb-12 border border-slate-100 dark:border-slate-700">
+<div class="md:w-1/2 p-4">
+<img alt="Travel Connection Graph Science" class="w-full h-full object-cover rounded-2xl min-h-[300px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMol56X-_2rhOt2xC21YPprKJ6AhH--HhYc-zY8Oma7bWHtSqjIBSjKs51SCO0dwaTwnDR_C5QdYbjMz4p2DkTgkFkXrIVUeoLACuodGoJ2G9-fEUA0ea67oTiXS9LMeF8F7TghsQ08WNQ0zwMyualu65HId-z5CWnYJCJpEqlBHE-B8o3lB21ZbaGmRhC30WpPe--kRMv5ZcHFFbSYQL1MhLDCGs37ywugnoNhfEmvtD7iE488U9MZ0tKMnTL8imQTfY4pFb8TiHS"/>
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-center">
+<h3 class="text-2xl font-bold mb-4">Travel Connection (Graph Data Science)</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Optimized route calculation using graph databases for real-time traffic analysis.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-xs font-bold px-3 py-1 rounded">Python</span>
+<span class="bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 text-xs font-bold px-3 py-1 rounded">Pandas</span>
+<span class="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold px-3 py-1 rounded">Neo4j</span>
+<span class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-xs font-bold px-3 py-1 rounded">GeoPandas</span>
+</div>
+<div class="flex gap-4">
+<button class="bg-secondary dark:bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold">Details</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-slate-100 dark:border-slate-700">
+<div class="md:w-1/2 p-4">
+<img alt="Plantworld Online Shop Mockup" class="w-full h-full object-cover rounded-2xl min-h-[300px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMXbVkObgW5lalcfGSYonGs4yNOtJA26XozVnyMlfh5DNSNtL1O8Xtl07D6JWfrXnxDvXRE8aeW6WNVA_UqaGzEsBUwEvXPqCfOX26vIINtLZvWIpZcNb-OumRZ5hMHYLJP8eGW0CnGWOaw_x8syJ_lrpBqtVGKu1nRO_P8L-ZFEK9mSu1Ivf-Z2D5gK2ovEJBdCaePOHbB7l_lZJqER_yL_6pDGRhGIoBXjSmudABRgRtpnQeX55UZeme2tXRbi10Z5V9Ey2SqSXC"/>
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-center">
+<h3 class="text-2xl font-bold mb-4">Plantworld Online Shop</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Developed a high-performance e-commerce platform for rare house plants with high concurrency support.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold px-3 py-1 rounded">Next.js</span>
+<span class="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold px-3 py-1 rounded">Spring Boot</span>
+<span class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-xs font-bold px-3 py-1 rounded">RabbitMQ</span>
+<span class="bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 text-xs font-bold px-3 py-1 rounded">REST API</span>
+</div>
+<div class="flex gap-4">
+<button class="bg-secondary dark:bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold">Live Demo</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 max-w-7xl mx-auto px-4" id="experience">
+<div class="text-center mb-20">
+<h2 class="text-3xl font-bold text-secondary dark:text-white mb-2">Career &amp; Education</h2>
+<p class="text-slate-500 dark:text-slate-400">Professional journey and academic foundation</p>
+</div>
+<div class="timeline-container max-w-5xl mx-auto">
+<div class="timeline-line"></div>
+<div class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24">
+<div class="timeline-dot top-0"></div>
+<div class="w-full md:w-[45%] text-left md:text-right mb-6 md:mb-0 order-2 md:order-1 px-8 md:px-0">
+<h4 class="text-xl font-bold text-secondary dark:text-white">Fullstack Internship</h4>
+<p class="text-primary font-semibold">Stromnetz Berlin GmbH</p>
+<p class="text-sm text-slate-500 font-medium">04/2024 – 06/2024</p>
+</div>
+<div class="w-full md:w-[45%] order-3 md:order-2 px-8 md:px-0">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Contributed to full-stack development initiatives using modern Java and Python stacks.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Focusing on internal tools development and infrastructure optimizations.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24">
+<div class="timeline-dot top-0"></div>
+<div class="w-full md:w-[45%] order-3 md:order-1 px-8 md:px-0">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Major in Software Engineering and Data Systems.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Focus on scalable architectures and algorithm design.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="w-full md:w-[45%] text-left mb-6 md:mb-0 order-2 px-8 md:px-0">
+<h4 class="text-xl font-bold text-secondary dark:text-white">B.Sc. Applied Computer Science</h4>
+<p class="text-primary font-semibold">HTW Berlin</p>
+<p class="text-sm text-slate-500 font-medium">2019 – 2025</p>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between">
+<div class="timeline-dot top-0"></div>
+<div class="w-full md:w-[45%] text-left md:text-right mb-6 md:mb-0 order-2 md:order-1 px-8 md:px-0">
+<h4 class="text-xl font-bold text-secondary dark:text-white">BTEC Level 5 HND</h4>
+<p class="text-primary font-semibold">Higher National Diploma</p>
+<p class="text-sm text-slate-500 font-medium">2012 – 2014</p>
+</div>
+<div class="w-full md:w-[45%] order-3 md:order-2 px-8 md:px-0">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Practical training in computer systems and network infrastructure.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-lg mr-2 mt-0.5">check_circle</span>
+<span class="text-slate-600 text-sm leading-relaxed">Core foundation in professional IT practices.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-secondary text-white py-12">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-12 border-b border-slate-700 pb-12">
+<div class="col-span-2">
+<h3 class="text-2xl font-bold mb-4">Georges Azar</h3>
+<p class="text-slate-400 max-w-sm">
+                        Building the future of data-driven applications with modern technologies and elegant code.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold mb-4">Quick Links</h4>
+<ul class="space-y-2 text-slate-400">
+<li><a class="hover:text-primary" href="#home">Home</a></li>
+<li><a class="hover:text-primary" href="#projects">Projects</a></li>
+<li><a class="hover:text-primary" href="#skills">Skills</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Connect</h4>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+<p>© 2024 Georges Azar. All rights reserved.</p>
+<div class="flex space-x-8 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
 
-  <section id="hero">
-    <h2 data-i18n="hero_title"></h2>
-    <p data-i18n="hero_text"></p>
-  </section>
-
-  <section id="about">
-    <div>
-      <h2 class="section-title" data-i18n="about_title"></h2>
-      <p data-i18n="about_text"></p>
-    </div>
-    <div>
-      <h3 data-i18n="skills_title"></h3>
-      <ul>
-        <li>Python, Java, Spring Boot, React.js, Next.js</li>
-        <li>PostgreSQL, MongoDB, Docker, GitLab CI/CD, n8n</li>
-        <li>Machine Learning, REST APIs, Data Analytics</li>
-        <li>Azure DevOps, Agile Methods</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2 class="section-title" data-i18n="projects_title"></h2>
-    <div class="projects-grid">
-      <div class="project">
-        <h3>Automated Grading System</h3>
-        <p data-i18n="proj1_text"></p>
-        <p><strong>Tech:</strong> Docker, Python, React.js, PostgreSQL, TailwindCSS</p>
-        <a href="https://github.com/doshkaL/Automatisiertes-Bewertungssystem-f-r-Programmieraufgaben" target="_blank">GitHub</a>
-      </div>
-      <div class="project">
-        <h3>Travel Connection (Graph Data Science)</h3>
-        <p data-i18n="proj2_text"></p>
-        <p><strong>Tech:</strong> Python, Pandas, GeoPandas, Neo4j</p>
-      </div>
-      <div class="project">
-        <h3>Plantworld Online Shop</h3>
-        <p data-i18n="proj3_text"></p>
-        <p><strong>Tech:</strong> Next.js, Spring Boot, RabbitMQ, REST API</p>
-        <a href="https://github.com/KBE-Webshop" target="_blank">GitHub</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2 class="section-title" data-i18n="exp_title"></h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>Fullstack Internship – Stromnetz Berlin GmbH</h3>
-        <span>04/2024 – 06/2024</span>
-        <p data-i18n="exp1_text"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2 class="section-title" data-i18n="edu_title"></h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>B.Sc. Applied Computer Science – HTW Berlin</h3>
-        <span>2019 – 2025</span>
-        <p data-i18n="edu1_text"></p>
-      </div>
-      <div class="timeline-item">
-        <h3>BTEC Level 5 HND Diploma – New Horizons Institute</h3>
-        <span>2012 – 2014</span>
-        <p data-i18n="edu2_text"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title" data-i18n="contact_title"></h2>
-    <p>📍 Berlin, Germany</p>
-    <p>📧 <a href="mailto:georges.azar.tech@gmail.com">georges.azar.tech@gmail.com</a></p>
-    <p><a href="https://github.com/doshkaL" target="_blank">GitHub</a> |
-       <a href="https://www.linkedin.com/in/georges-azar-a571362a1" target="_blank">LinkedIn</a></p>
-  </section>
-
-  <footer>© 2025 Georges Azar – Designed & Built by Hand.</footer>
-
-  <script>
-    /* ---------- Translations ---------- */
-    const translations = {
-      de: {
-        nav_about:"Über mich", nav_projects:"Projekte", nav_experience:"Erfahrung",
-        nav_education:"Bildung", nav_contact:"Kontakt",
-        hero_title:"Full-Stack Engineer & Data Professional",
-        hero_text:"Ich entwickle skalierbare, datengesteuerte Anwendungen und Softwarelösungen mit Fokus auf Performance und Benutzerfreundlichkeit.",
-        about_title:"Über mich",
-        about_text:"Full-Stack-Entwickler mit Fokus auf Python, Java, Spring Boot, React und PostgreSQL. Erfahrung in agiler Entwicklung und datengetriebenen Projekten.",
-        skills_title:"Fähigkeiten",
-        projects_title:"Projekte",
-        proj1_text:"Microservice-System zur automatisierten Bewertung von Programmieraufgaben für Bildungsplattformen.",
-        proj2_text:"Optimierte Berechnung von Routen mithilfe von Graphdatenbanken für Echtzeitverkehrsanalyse.",
-        proj3_text:"Fullstack-Shop in Microservice-Architektur mit Next.js & Spring Boot.",
-        exp_title:"Berufserfahrung",
-        exp1_text:"Frontend- & Backend-Entwicklung, neue Features, Performance-Optimierung, Azure DevOps.",
-        edu_title:"Bildung",
-        edu1_text:"Schwerpunkte: Datenwissenschaft, Softwareentwicklung, Projektmanagement.",
-        edu2_text:"Fokus: Softwareentwicklung, Datenanalyse & Systemdesign.",
-        contact_title:"Kontakt"
-      },
-      en: {
-        nav_about:"About", nav_projects:"Projects", nav_experience:"Experience",
-        nav_education:"Education", nav_contact:"Contact",
-        hero_title:"Full-Stack Engineer & Data Professional",
-        hero_text:"I build scalable, data-driven applications and software solutions focused on performance and usability.",
-        about_title:"About Me",
-        about_text:"Full-stack developer specializing in Python, Java, Spring Boot, React, and PostgreSQL. Experienced in agile development and data-driven systems.",
-        skills_title:"Skills",
-        projects_title:"Projects",
-        proj1_text:"Microservice system for automated grading of programming tasks for education platforms.",
-        proj2_text:"Optimized route calculation using graph databases for real-time traffic analysis.",
-        proj3_text:"Full-stack e-commerce platform using Next.js and Spring Boot microservices.",
-        exp_title:"Experience",
-        exp1_text:"Frontend & backend development, new features, performance optimization, Azure DevOps.",
-        edu_title:"Education",
-        edu1_text:"Focus: Data Science, Software Development, Project Management.",
-        edu2_text:"Focus: Software Engineering, Data Analysis & System Design.",
-        contact_title:"Contact"
-      }
-    };
-
-    /* ---------- Theme Toggle ---------- */
-    const themeToggle=document.getElementById("theme-toggle");
-    const savedTheme=localStorage.getItem("theme");
-    document.documentElement.setAttribute("data-theme",savedTheme||"light");
-    themeToggle.textContent=(savedTheme==="dark")?"☀️":"🌙";
-    themeToggle.onclick=()=>{
-      const current=document.documentElement.getAttribute("data-theme");
-      const next=current==="dark"?"light":"dark";
-      document.documentElement.setAttribute("data-theme",next);
-      localStorage.setItem("theme",next);
-      themeToggle.textContent=next==="dark"?"☀️":"🌙";
-    };
-
-    /* ---------- Language Toggle ---------- */
-    const langToggle=document.getElementById("lang-toggle");
-    let currentLang=localStorage.getItem("lang")||"de";
-    function applyTranslations(){
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const key=el.dataset.i18n;
-        if(translations[currentLang][key]) el.textContent=translations[currentLang][key];
-      });
-      langToggle.textContent=currentLang==="de"?"EN":"DE";
-    }
-    langToggle.onclick=()=>{
-      currentLang=currentLang==="de"?"en":"de";
-      localStorage.setItem("lang",currentLang);
-      applyTranslations();
-    };
-    applyTranslations();
-
-    /* ---------- Fade-in on scroll ---------- */
-    const observer=new IntersectionObserver(e=>{
-      e.forEach(x=>{
-        if(x.isIntersecting){x.target.classList.add("visible");observer.unobserve(x.target);}
-      });
-    },{threshold:.2});
-    document.querySelectorAll("section").forEach(s=>observer.observe(s));
-  </script>
-</body>
-</html>
+</body></html>
